@@ -1,0 +1,29 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    version="3.0">
+  <display-name>HelloREST</display-name>
+  
+   <!-- Define ServletContainer of Jersey -->
+   <servlet>
+       <servlet-name>HelloRest</servlet-name>
+       <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+       <!-- Define the ResourceConfig class -->
+       <init-param>
+           <param-name>javax.ws.rs.Application</param-name>
+           <param-value>com.hellorest.app.HelloRESTApplication</param-value>
+       </init-param>
+       <init-param>
+       		<param-name>jersey.config.disableMetainfServicesLookup</param-name>
+       		<param-value>true</param-value>
+       </init-param>
+       <load-on-startup>1</load-on-startup>
+   </servlet>
+
+   <!-- Map all the URLs to the Jersey ServletContainer -->
+   <servlet-mapping>
+       <servlet-name>HelloRest</servlet-name>
+       <url-pattern>/*</url-pattern>
+   </servlet-mapping>
+</web-app>
+
