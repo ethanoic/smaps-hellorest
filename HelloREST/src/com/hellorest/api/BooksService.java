@@ -91,7 +91,7 @@ public class BooksService {
 		return Response.ok().build();
 	}
 	
-	@RolesAllowed({"USER","SUBADMIN"})
+	@RolesAllowed({"USER", "ADMIN"})
 	@POST
 	@Produces({"application/json"})
 	@Path("draft")

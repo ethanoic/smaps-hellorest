@@ -45,7 +45,7 @@ public class OAuthAuthenticationFilter implements javax.ws.rs.container.Containe
             if(method.isAnnotationPresent(DenyAll.class))
             {
                 requestContext.abortWith(Response.status(Response.Status.FORBIDDEN)
-                        .entity("Access blocked for all users !!").build());
+                        .entity("This resource denies all").build());
                 return;
             }
               
@@ -59,7 +59,7 @@ public class OAuthAuthenticationFilter implements javax.ws.rs.container.Containe
             if(authorization == null || authorization.isEmpty())
             {
                 requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED)
-                        .entity("You cannot access this resource").build());
+                        .entity("no authorization header").build());
                 return;
             }
               
@@ -78,21 +78,15 @@ public class OAuthAuthenticationFilter implements javax.ws.rs.container.Containe
                 RolesAllowed rolesAnnotation = method.getAnnotation(RolesAllowed.class);
                 Set<String> rolesSet = new HashSet<String>(Arrays.asList(rolesAnnotation.value()));
 
-                if( !JWTToken.validateJWT(jwt))
-                {
-                    requestContext.abortWith(Response.status(Response.Status.FORBIDDEN)
-                            .entity("Access blocked for all users !!").build());
-                    return;
-                }
-                
                 // get role from claims
                 Claims claims = JWTToken.getClaims(jwt);
                 String userRole = claims.get("role").toString();
                 System.out.println("role authenticated is " + userRole);
+                System.out.println("method roles are " + rolesAnnotation.toString());
         		if (!rolesSet.contains(userRole)) 
         		{
                     requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED)
-                            .entity("You cannot access this resource").build());
+                            .entity("no access due to roles").build());
                     return;
         		}
             }
