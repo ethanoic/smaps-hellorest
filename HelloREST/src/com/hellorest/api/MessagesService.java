@@ -44,13 +44,15 @@ public class MessagesService {
 		return Response.ok("get with path parameter id:" + id).build();
 	}
 	
+	// GET /messages/query?term=
 	@GET
 	@Path("query")
 	public Response GetWithQueryParam(
-			@DefaultValue("") @QueryParam("term") String term) {
+			@DefaultValue("[empty]") @QueryParam("term") String term) {
 		return Response.ok("get with querystring:" + term).build();
 	}
 	
+	// GET /messages/json
 	@GET
 	@Path("json")
 	@Produces("application/json")
@@ -66,11 +68,13 @@ public class MessagesService {
         return Response.ok(entity).build();
 	}
 
+	// GET /messages/list
 	@GET
 	@Path("list")
 	@Produces("application/json")
 	public Response GetJSONList() {
 		
+		// Instantiate an Array List that will store your message objects
 		List<Message> messages = new ArrayList<Message>();
 		
 		Message message = new Message();
