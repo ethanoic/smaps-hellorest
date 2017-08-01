@@ -32,7 +32,7 @@ import com.hellorest.models.api.UpdateBookModel;
 @Path("books")
 public class BooksService {
 	
-	private String resourcePath = "/helloREST/books";
+	private String resourcePath = "/HelloREST/books";
 	//private BooksDataLayer data = new BooksDataLayer();
 	private BooksManager manager = new BooksManager();
 	
