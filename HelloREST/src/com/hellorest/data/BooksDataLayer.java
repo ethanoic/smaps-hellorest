@@ -214,7 +214,9 @@ public class BooksDataLayer {
 		try (
 			// get sql connections
 			Connection conn = DriverManager.getConnection(connstring, user, password);
-			PreparedStatement statement = conn.prepareStatement("UPDATE books SET title = ?, author = ?, isbn = ?, exerpt = ?, publishedYear = ?, publisher = ?, category = ?, approved = ? WHERE id = ?");
+			PreparedStatement statement = conn.prepareStatement("UPDATE books SET title = ?, authorId = ?, "
+					+ "isbn = ?, exerpt = ?, publishedYear = ?, "
+					+ "publisher = ?, category = ?, approved = ? WHERE id = ?");
 		) {
 			statement.setString(1, book.Title);
 			statement.setInt(2, book.AuthorId);
@@ -222,8 +224,8 @@ public class BooksDataLayer {
 			statement.setString(4, book.Exerpt);
 			statement.setInt(5, book.PublishedYear);
 			statement.setString(6, book.Publisher);
-			statement.setBoolean(7, book.Approved);
-			statement.setString(8, book.Category);
+			statement.setString(7, book.Category);
+			statement.setBoolean(8, book.Approved);
 			
 			statement.setLong(9, book.Id);
 			
