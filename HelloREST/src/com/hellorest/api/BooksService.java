@@ -60,6 +60,29 @@ public class BooksService {
 		//booksPaged.put("paging", paging);
 		booksPaged.Paging = paging;
 		
+		// get total pages count
+		int totalPages = 0; // write a method to get the number of pages from the books based on pagesize
+		// create individual page resource links, depends on how many pages there are
+		for(int p = 0; p < totalPages; p++) {
+			paging.Pages.add(new ResourceLink(resourcePath + "?page=" + p + "&pagesize=" + pagesize, "GET", "Page"));
+		}
+		
+		// create next page
+		if (page < totalPages) {
+			int nextPage = page + 1;
+			paging.Next.Href = resourcePath + "?page=" + nextPage + "&pagesize=" + pagesize;
+			paging.Next.Method = "GET";
+			paging.Next.Rel = "NextPage";
+		}
+		
+		// create prev page
+		if (page > 0) {
+			int prevPage = page - 1;
+			paging.Prev.Href = resourcePath + "?page=" + prevPage + "&pagesize=" + pagesize;
+			paging.Prev.Method = "GET";
+			paging.Prev.Rel = "NextPage";
+		}
+		
 		ArrayList<ListModelBook> booksList = this.manager.GetAllBooks(page, pagesize);
 		for(ListModelBook book : booksList) {
 			book.Link.Href = resourcePath + "/" + book.Id;
@@ -97,7 +120,7 @@ public class BooksService {
 		return Response.ok(entity).build();
 	}
 	
-	@PermitAll
+	@RolesAllowed("USER")
 	@Consumes({"application/json"})
 	@POST
 	public Response AddBook(AddBookModel book) {

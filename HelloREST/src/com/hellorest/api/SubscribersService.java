@@ -23,7 +23,8 @@ public class SubscribersService {
 		
 		System.out.println(email + "," + password + "," + name);
 		if (id == 0) 
-			return Response.status(Status.CONFLICT).build();
+			//return Response.status(Status.CONFLICT).build();
+			return Response.ok("Email already exists").build();
 		else
 			return Response.status(Status.CREATED).build();
 	}

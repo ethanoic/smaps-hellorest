@@ -4,6 +4,19 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/*
+Schema
+
+CREATE TABLE `subscribers` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `email` varchar(500) DEFAULT NULL,
+  `password` varchar(500) DEFAULT NULL,
+  `name` varchar(500) DEFAULT NULL,
+  `dateRegistered` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+)
+ */
+
 @XmlRootElement
 public class Subscriber {
 	@XmlElement

@@ -80,4 +80,6 @@ public class BooksManager {
 	public ArrayList<Book> SearchBooksByDateAdded(Date start, Date end) {
 		return dataLayer.SearchByDateAdded(start, end);
 	}
+	
+	// TODO : write a method to return total number of pages
 }
