@@ -7,8 +7,8 @@ public class HelloRESTApplication extends ResourceConfig {
         packages("com.hellorest.api");
         register(MyJacksonFeature.class);
         
-        register(BasicAuthenticationFilter.class);
-        //register(OAuthAuthenticationFilter.class);
+        //register(BasicAuthenticationFilter.class);
+        register(OAuthAuthenticationFilter.class);
     }
     
 }

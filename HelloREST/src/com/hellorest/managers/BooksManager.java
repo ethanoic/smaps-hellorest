@@ -82,4 +82,7 @@ public class BooksManager {
 	}
 	
 	// TODO : write a method to return total number of pages
+	public int GetTotalPages(int pagesize) {
+		return 0;
+	}
 }

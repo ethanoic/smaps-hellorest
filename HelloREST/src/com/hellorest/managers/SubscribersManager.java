@@ -41,6 +41,15 @@ public class SubscribersManager {
 			return 0;
 	}
 	
+	public long RegisterSubscriber(String email, String password, String name, String tel) {
+		if (!dataLayer.IsEmailUsed(email) && email != "" && password != "" && name != "") {
+			long id = dataLayer.Create(email, password, name);
+			// may do other things - like send a welcome or confirmation email
+			return id;
+		} else
+			return 0;
+	}
+	
 	public Boolean IsSubscriberValid(String email, String password) {
 		Boolean result = dataLayer.IsEmailPasswordExists(email, password);
 		return result;
