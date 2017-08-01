@@ -61,7 +61,7 @@ public class BooksService {
 		booksPaged.Paging = paging;
 		
 		// get total pages count
-		int totalPages = 0; // write a method to get the number of pages from the books based on pagesize
+		int totalPages = manager.GetTotalPages(pagesize);
 		// create individual page resource links, depends on how many pages there are
 		for(int p = 0; p < totalPages; p++) {
 			paging.Pages.add(new ResourceLink(resourcePath + "?page=" + p + "&pagesize=" + pagesize, "GET", "Page"));

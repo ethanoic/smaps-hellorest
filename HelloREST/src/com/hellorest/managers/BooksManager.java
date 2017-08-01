@@ -81,8 +81,8 @@ public class BooksManager {
 		return dataLayer.SearchByDateAdded(start, end);
 	}
 	
-	// TODO : write a method to return total number of pages
 	public int GetTotalPages(int pagesize) {
-		return 0;
+		long totalRecords = dataLayer.CountBooks();
+		return (int)Math.ceil(totalRecords / pagesize);
 	}
 }

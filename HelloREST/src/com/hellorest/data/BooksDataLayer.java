@@ -62,7 +62,8 @@ public class BooksDataLayer {
 			PreparedStatement statement = conn.prepareStatement("SELECT COUNT(id) FROM books");
 		) {
 			ResultSet rs = statement.executeQuery();
-			count = rs.getLong(1);
+			if (rs.next())
+				count = rs.getLong(1);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
