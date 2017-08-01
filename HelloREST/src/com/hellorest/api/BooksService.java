@@ -68,7 +68,8 @@ public class BooksService {
 		}
 		
 		// create next page
-		if (page < totalPages) {
+		// 1 based paging
+		if (page + 1 <= totalPages) {
 			int nextPage = page + 1;
 			paging.Next.Href = resourcePath + "?page=" + nextPage + "&pagesize=" + pagesize;
 			paging.Next.Method = "GET";
@@ -76,7 +77,7 @@ public class BooksService {
 		}
 		
 		// create prev page
-		if (page > 0) {
+		if (page > 1) {
 			int prevPage = page - 1;
 			paging.Prev.Href = resourcePath + "?page=" + prevPage + "&pagesize=" + pagesize;
 			paging.Prev.Method = "GET";

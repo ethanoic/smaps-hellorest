@@ -103,7 +103,7 @@ public class BooksDataLayer {
 	
 	public ArrayList<Book> GetAllBooks(int page, int pageSize) {
 		ArrayList<Book> books = new ArrayList<Book>();
-		int offset = pageSize * page;
+		int offset = pageSize * (page - 1);
 		
 		try (
 			// get sql connections

@@ -83,6 +83,6 @@ public class BooksManager {
 	
 	public int GetTotalPages(int pagesize) {
 		long totalRecords = dataLayer.CountBooks();
-		return (int)Math.ceil(totalRecords / pagesize);
+		return (int)Math.ceil((double)totalRecords / pagesize);
 	}
 }
