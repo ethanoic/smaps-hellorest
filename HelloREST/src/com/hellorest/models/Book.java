@@ -8,11 +8,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 /*
  Book Schema
 * for MYSQL 5 
-create table books (
-	id bigint not null auto_increment primary key,
-    title nvarchar(500) not null,
-    author nvarchar(500) not null
+CREATE TABLE `books` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(500) NOT NULL,
+  `authorId` bigint(20) NOT NULL DEFAULT '0',
+  `isbn` varchar(500) NOT NULL,
+  `exerpt` varchar(500) NOT NULL,
+  `publishedYear` int(11) NOT NULL,
+  `publisher` varchar(500) NOT NULL,
+  `category` varchar(500) NOT NULL,
+  `approved` bit(1) NOT NULL,
+  `dateAdded` datetime DEFAULT NULL,
+  `coverImage` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
 );
+
 
  */
 

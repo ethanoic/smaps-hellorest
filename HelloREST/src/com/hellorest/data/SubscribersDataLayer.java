@@ -33,7 +33,7 @@ public class SubscribersDataLayer {
 			statement.setString(1, email);
 			statement.setString(2, userPassword);
 			statement.setString(3, name);
-			statement.setDate(4, new java.sql.Date(new Date().getTime()) );
+			statement.setTimestamp(4, new java.sql.Timestamp(new Date().getTime()));
 			
 			int affectedRows = statement.executeUpdate();
 			if (affectedRows == 0) {

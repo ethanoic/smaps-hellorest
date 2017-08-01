@@ -167,7 +167,7 @@ public class BooksDataLayer {
 			statement.setString(6, newBook.Publisher);
 			statement.setBoolean(7, newBook.Approved);
 			statement.setString(8, newBook.Category);
-			statement.setDate(9, new java.sql.Date(new Date().getTime()));
+			statement.setTimestamp(9, new java.sql.Timestamp(new Date().getTime()));
 			statement.setString(10, newBook.CoverImage);
 			
 			int affectedRows = statement.executeUpdate();

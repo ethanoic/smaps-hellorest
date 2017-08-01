@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
 import javax.annotation.security.*;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -52,6 +53,12 @@ public class BooksService {
 	@GET
 	@Produces({"application/json; qs=1","application/xml; qs=0.9"})
 	public Response GetBooksPaged(@QueryParam("page") int page, @QueryParam("pagesize") int pagesize) {
+		
+		if (pagesize == 0)
+			pagesize = 10;
+		
+		if (page == 0)
+			page = 1;
 		
 		ArrayList<Book> books = new ArrayList<Book>();
 		//Dictionary<String, Object> booksPaged = new Hashtable<String, Object>();
@@ -147,7 +154,7 @@ public class BooksService {
 	}
 	*/
 	
-	@PermitAll
+	@RolesAllowed("ADMIN")
 	@Path("{id}")
 	@PUT
 	public Response UpdateBook(@PathParam("id") long id, UpdateBookModel book) {
