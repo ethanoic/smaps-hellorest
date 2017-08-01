@@ -61,7 +61,7 @@ public class MessagesService {
 		Message message = new Message();
 		message.Subject = "a message subject";
 		message.Body = "the body";
-		message.DateSent = new Date();
+		message.DatePosted = new Date();
 		
 		GenericEntity<Message> entity = new GenericEntity<Message>(message) {};
 		
@@ -80,14 +80,14 @@ public class MessagesService {
 		Message message = new Message();
 		message.Subject = "subject 1";
 		message.Body = "the body 1";
-		message.DateSent = new Date();
+		message.DatePosted = new Date();
 
 		messages.add(message);
 		
 		Message message2 = new Message();
 		message2.Subject = "subject 2";
 		message2.Body = "the body 2";
-		message2.DateSent = new Date();
+		message2.DatePosted = new Date();
 
 		messages.add(message2);
 		

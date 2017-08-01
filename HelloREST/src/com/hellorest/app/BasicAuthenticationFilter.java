@@ -18,6 +18,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
  
 import org.glassfish.jersey.internal.util.Base64;
+
+import com.hellorest.managers.SubscribersManager;
  
 /**
  * This filter verify the access permissions for a user
@@ -95,13 +97,14 @@ public class BasicAuthenticationFilter implements javax.ws.rs.container.Containe
     }
     private boolean isUserAllowed(final String username, final String password, final Set<String> rolesSet)
     {
+    	SubscribersManager manager = new SubscribersManager();
         boolean isAllowed = false;
           
         //Step 1. Fetch password from database and match with password in argument
         //If both match then get the defined role for user from database and continue; else return isAllowed [false]
         //Access the database and do this part yourself
         //String userRole = userMgr.getUserRole(username);
-         
+        /*
         if(username.equals("smaps") && password.equals("password"))
         {
             String userRole = "ADMIN";
@@ -112,6 +115,10 @@ public class BasicAuthenticationFilter implements javax.ws.rs.container.Containe
                 isAllowed = true;
             }
         }
+        */
+        
+        isAllowed = manager.IsSubscriberValid(username, password);
+       
         return isAllowed;
     }
 }

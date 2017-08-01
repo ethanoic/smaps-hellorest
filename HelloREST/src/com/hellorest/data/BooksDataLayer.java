@@ -30,9 +30,9 @@ create table books (
  */
 public class BooksDataLayer {
 	
-	private String connstring = "jdbc:mysql://localhost:3306/hellorest2?useSSL=false";
-	private String user = "root";
-	private String password = "1234";
+	private String connstring = ConnectionSettings.getConnString();
+	private String user = ConnectionSettings.getUser();
+	private String password = ConnectionSettings.getPassword();
 	
 	public ArrayList<Book> GetAllBooks() {
 		ArrayList<Book> books = new ArrayList<Book>();

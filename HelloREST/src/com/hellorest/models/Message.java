@@ -7,7 +7,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Message {
 	@XmlElement
-	public int Id;
+	public long Id;
+	
+	@XmlElement
+	public long BookId;
 	
 	@XmlElement
 	public String Body;
@@ -16,18 +19,19 @@ public class Message {
 	public String Subject;
 	
 	@XmlElement
-	public Date DateSent;
+	public Date DatePosted;
 	
-	public int SubscriberId;
+	public long SubscriberId;
 	
 	public Message() {
 	}
 	
-	public Message(int Id, String subject, String body, Date dateSent, int subscriberId) {
+	public Message(long Id, long bookId, String subject, String body, Date dateSent, long subscriberId) {
 		this.Id = Id;
+		this.BookId = bookId;
 		this.Subject = subject;
 		this.Body = body;
-		this.DateSent = dateSent;
+		this.DatePosted = dateSent;
 		this.SubscriberId = subscriberId;
 	}
 }
